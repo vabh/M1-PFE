@@ -3,13 +3,28 @@
 <html>
 <head>
 	<title>Tweet Reader</title>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<button id = "save-tweets"> Save</button>
-	<div id="tweets"></div>
 
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="loadTweets.js"></script>
-	<script type="text/javascript" src="tweetOps.js"></script>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<button id = "save-tweets" class="btn">Save</button>
+
+				<div id="tweets" class="jumbotron"></div>
+
+				<script type="text/javascript" src="jquery.min.js"></script>
+				<script type="text/javascript" src="loadTweets.js"></script>
+				<script type="text/javascript" src="tweetOps.js"></script>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
