@@ -3,10 +3,17 @@ import twitter
 import json
 import os
 
+<<<<<<< HEAD
 api = twitter.Api(consumer_key='',
                   consumer_secret='',
                   access_token_key='',
                   access_token_secret='')
+=======
+api = twitter.Api(consumer_key='GjCpkXAMaQ5Rd47D95omlr24J',
+                  consumer_secret='LUmPay5vdj5laZ35ymGvmtxqMAci50rQNLVDcKWEcIl18lEnPa',
+                  access_token_key='150636966-8MbeOixT1pxPmJ4uUw64hpYz7DfxUoMjoXTZHVkT',
+                  access_token_secret='UEbDXKM6PijvXtrnpSSCKbDR0T9EoDsNxlvQMGQP7nuuf')
+>>>>>>> 829cd2dd975b21fd5b281310bce37e349cc08aa3
 
 def fetch(api, file):
 
