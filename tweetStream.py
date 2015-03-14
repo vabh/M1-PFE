@@ -2,20 +2,12 @@
 import twitter
 import json
 import os
-
-api = twitter.Api(consumer_key='',
-                  consumer_secret='',
-                  access_token_key='',
-                  access_token_secret='')
-
+import time
+  
 def fetch(api, file):
-
-# for tweet in streamSample:
-# 	if tweet.get('lang') == 'en':
-# 		print tweet['id'] , " : " ,tweet.get('text')	
-
+	
 	data = {}
-	streamSample = api.GetStreamFilter(track="QQCCMH8")
+	streamSample = api.GetStreamSample()
 	for tweet in streamSample:
 		if tweet.get('lang') == 'en' and tweet.get('text') and tweet.get('geo'):
 			data['tweet_id'] = str(tweet['id'])
@@ -24,22 +16,41 @@ def fetch(api, file):
 			json.dump(data, file)			
 			file.write(",")
 
-def search(api, file):
-	results = api.GetSearch(term="#QQCCMH8", count=200)
+def search(api, file, query):
+	results = api.GetSearch(term = query, count = 100)
 	data = {}
-	for tweet in results:		
-		if tweet.lang == 'en' and tweet.text:
-			data['tweet_id'] = str(tweet.id)
-			# data['user'] = tweet.user.get('screen_name')
-			data['text'] = tweet.text
-			json.dump(data, file)			
-			file.write(",")			
+	since_id = 0
+
+	for i in range(1, 500):
+		
+		for tweet in results:		
+			if tweet.lang == 'en' and tweet.text:
+				data['tweet_id'] = str(tweet.id)
+				# data['user'] = tweet.user.get('screen_name')
+				data['text'] = tweet.text
+				json.dump(data, file)			
+				file.write(",")
+
+			since_id = max(since_id, data['tweet_id'])
+
+		print since_id
+		results = api.GetSearch(term = query, count = 100, since_id = since_id, result_type='recent')
 
 # add command line params
+
+data = open('keys/vabh.txt').read().splitlines()
+
+api = twitter.Api(consumer_key=data[0],
+                  consumer_secret=data[1],
+                  access_token_key=data[2],
+                  access_token_secret=data[3])
 try:
-	file = open('geotweets2.txt', 'w')
+	timestr = time.strftime("%Y%m%d-%H%M%S") + '.txt'
+	file = open("tweets/" + timestr, 'w')
 	file.write("[")
-	fetch(api, file)
+
+	search(api, file, "Happy Pi Day")
+
 	file.seek(-1, os.SEEK_END)
 	file.write("]")
 	file.close()
@@ -49,4 +60,4 @@ except:
 	file.write("]")
 	file.close()
 
-# print api.GetStatus(570175478784356352).user.screen_name
+# print api.GetStatus().user.screen_name
