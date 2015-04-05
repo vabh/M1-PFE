@@ -11,6 +11,5 @@ data = json.loads(line)
 var = 'created_at'
 id_s = str(data[var])
 
-
 # print id_s
 pprint.pprint(data)
