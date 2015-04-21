@@ -11,15 +11,13 @@ with open(filename, 'r') as f:
 		index = index.split(':')
 		index = index[0] + ':' + index[1]
 		if index in time:
-			time[index] = time[index] + 1;
+			time[index] = time[index] + 1
 		else:
 			time[index] = 1
 
 mtime =  max(time, key = time.get)
 
 sorted_x = sorted(time.items(), key=operator.itemgetter(1), reverse=True)
-
-
 
 with open('freqSec.txt', 'w') as f:
 	for i in sorted_x:
