@@ -25,5 +25,8 @@ for i in range(1, 10):
 		l[str(a)].append(i)
 	else:
 		l[str(a)] = []
+# print l
+# print len(l['0'])
 
-print l
+for i in range(0, 4):
+		print i
