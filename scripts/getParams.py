@@ -2,31 +2,48 @@ import json
 import pprint
 import os
 import glob
+import bz2
 
 tweets_path = '../tweets/hillary/'
 
 os.chdir(tweets_path)
 file_list = []
-for f in glob.glob("*.txt"):
+for f in glob.glob("*.txt.bz2"):
     file_list.append(f)
 os.chdir('../../scripts')
 
+out_file_name = 'hillary_data.txt'
 
-out_file_name = 'test.txt'
+proccessed_ids = {}
 
 with open(out_file_name, 'w') as f_out:
 	for json_file in file_list:	
 
 		file_name = tweets_path + json_file
-		print file_name
-		with open(file_name, 'r') as f:
+		
+		# with open(file_name, 'r') as f:
+		with bz2.BZ2File(file_name, 'rb') as f:
 			for line in f:
-				l = json.loads(line)
+				try:
+					l = json.loads(line)
+				except:
+					print file_name
+					continue
+
 				data = {}
+				if l['id'] in proccessed_ids:
+					continue
+
+				proccessed_ids[l['id']] = 1	
 				data['time'] = l['created_at'].split()[3]
 				data['day'] = l['created_at'].split()[2]
+				data['month'] = l['created_at'].split()[1]
 				data['id'] = l['id']		
 				data['user'] = l['user']['screen_name']
+
+				if 'user_mentions' in l:
+					user_mentions = l['user_mentions']
+					data['mentioned_user'] = user_mentions[0]['screen_name']
 
 				if 'hashtags' in l:
 					data['hashtags'] = l['hashtags']
@@ -44,8 +61,9 @@ with open(out_file_name, 'w') as f_out:
 				else:
 					data['retweeted_status_id'] = -1
 					data['retweet_count'] = -1
+
 				json.dump(data, f_out)
 				f_out.write('\n')
+		print file_name
 			# print data
-
 # pprint.pprint(data)
