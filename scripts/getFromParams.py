@@ -28,7 +28,13 @@ with open(file_name, 'r') as f:
 
 sorted_x = sorted(hash_list.items(), key=operator.itemgetter(1), reverse=True)
 
-with open('co-hastags.txt', 'w') as f:
+with open('co-hashtags.txt', 'w') as f:
 	for i in range(0, 100):
 		f.write(sorted_x[i][0] + ', ' + str(sorted_x[i][1]['count']))
+		f.write('\n')
+
+
+with open('iphone-spam-user-list.txt', 'w') as f:
+	for user in sorted_x[0][1]['user']:
+		f.write(user)
 		f.write('\n')
