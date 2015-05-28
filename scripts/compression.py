@@ -5,14 +5,14 @@ import glob
 import bz2
 from shutil import copyfileobj
 
-# tweets_path = '../tweets/hillary/'
-tweets_path = ''
+tweets_path = '../tweets/video/'
+# tweets_path = ''
 
-# os.chdir(tweets_path)
+os.chdir(tweets_path)
 file_list = []
 for f in glob.glob("*.txt"):
     file_list.append(f)
-# os.chdir('../../scripts')
+os.chdir('../../scripts')
 
 
 for json_file in file_list:

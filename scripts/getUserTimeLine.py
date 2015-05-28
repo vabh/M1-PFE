@@ -1,5 +1,7 @@
 import twitter
 import json
+import traceback
+import linecache
 
 keys = open('../keys/nastya.txt').read().splitlines()
 
@@ -13,19 +15,28 @@ file_name = 'iphone-spam-user-list.txt'
 # number of lines in file, choose user randomly
 with open(file_name, 'r') as f_usernames:
 
-    for i in range(0, 20):
+    # for i in range(60):
+    #     f_usernames.readline()
 
-        user_name = f_usernames.readline().strip()
+    for i in range(61, 111):
+
+        # user_name = f_usernames.readline().strip()
+        user_name = linecache.getline(file_name, i + 1).strip()        
         max_id = -1
         with open('spam_users_timeline/' + user_name + '.txt', 'w') as f_out:
-            print user_name
+            print user_name , i
             for j in range(0, 3):
-                if max_id == -1:
-                    user_tweets = api.GetUserTimeline(
-                        screen_name=user_name, count=100, include_rts=1)
-                else:
-                    user_tweets = api.GetUserTimeline(
-                        screen_name=user_name, max_id=max_id, count=100, include_rts=1)
+
+            	try:
+            		if max_id == -1:
+            			user_tweets = api.GetUserTimeline(screen_name=user_name, count=100, include_rts=1)
+            		else:
+            			user_tweets = api.GetUserTimeline(screen_name=user_name, max_id=max_id, count=100, include_rts=1)
+                except Exception:
+	            	print(traceback.format_exc())
+	            	j = j - 1
+	            	continue
+
                 for tweet in user_tweets:
                     try:
                         tweet_data = json.loads(str(tweet))
@@ -42,7 +53,8 @@ with open(file_name, 'r') as f_usernames:
                     if 'hashtags' in tweet_data:
                         data['hashtags'] = tweet_data['hashtags']
 
-                    data['created_at'] = tweet_data['created_at'].split()[3]
-                    print data['created_at']
+                    data['created_at'] = tweet_data['created_at']
+
                     json.dump(data, f_out)
                     f_out.write('\n')
+# strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())

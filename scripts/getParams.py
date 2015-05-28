@@ -4,7 +4,7 @@ import os
 import glob
 import bz2
 
-tweets_path = '../tweets/iphone/'
+tweets_path = '../tweets/video/'
 
 os.chdir(tweets_path)
 file_list = []
@@ -12,7 +12,7 @@ for f in glob.glob("*.txt.bz2"):
     file_list.append(f)
 os.chdir('../../scripts')
 
-out_file_name = 'iphone_data.txt'
+out_file_name = 'video_data.txt'
 
 proccessed_ids = {}
 
@@ -30,11 +30,11 @@ with open(out_file_name, 'w') as f_out:
                     print file_name
                     continue
 
-                data = {}
                 if l['id'] in proccessed_ids:
                     continue
 
                 proccessed_ids[l['id']] = 1
+                data = {}
                 data['time'] = l['created_at'].split()[3]
                 data['day'] = l['created_at'].split()[2]
                 data['month'] = l['created_at'].split()[1]
