@@ -6,6 +6,7 @@ import time
 import pprint
 
 keys = open('../keys/vabh.txt').read().splitlines()
+# keys = open('../keys/nastya.txt').read().splitlines()
 current_key = 'nastya'
 
 
@@ -18,16 +19,18 @@ limit = api.GetRateLimitStatus()
 
 timestr = time.strftime("search-%Y%m%d-%H%M%S") + '.txt'
 
-query = "#youtube"
+query = "#Hillary2016"
 # r = api.GetRateLimitStatus()
 # pprint.pprint(r)
 out_file_id = open("../tweets/" + query + timestr, 'w')
 
-max_id = -1
+# max_id = -1
+
 f_max = open("../tweets/max", 'r')
 max_id = f_max.readline()
 f_max.close()
 
+print max_id
 choice = 1
 if choice == 1:
 
@@ -41,10 +44,10 @@ if choice == 1:
             if remaining != 0:
 
                 if max_id == -1:
-                    results = api.GetSearch(term = query, count = 100, lang = 'en', result_type = 'mixed')
+                    results = api.GetSearch(term = query, count = 100, lang = 'en', result_type = 'mixed')                    
                 else:
                     results = api.GetSearch(term=query, count=100, max_id=max_id, lang='en', result_type='recent')
-
+                
                 for tweet in results:
                     # print tweet.id
                     out_file_id.write(str(tweet))

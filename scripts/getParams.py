@@ -4,7 +4,7 @@ import os
 import glob
 import bz2
 
-tweets_path = '../tweets/video/'
+tweets_path = '../tweets/iphone/'
 
 os.chdir(tweets_path)
 file_list = []
@@ -12,10 +12,10 @@ for f in glob.glob("*.txt.bz2"):
     file_list.append(f)
 os.chdir('../../scripts')
 
-out_file_name = 'video_data.txt'
+out_file_name = 'iphone_data.txt'
 
 proccessed_ids = {}
-
+count = 0
 with open(out_file_name, 'w') as f_out:
     for json_file in file_list:
 
@@ -31,8 +31,10 @@ with open(out_file_name, 'w') as f_out:
                     continue
 
                 if l['id'] in proccessed_ids:
+                    print "seen"
                     continue
 
+                count += 1
                 proccessed_ids[l['id']] = 1
                 data = {}
                 data['time'] = l['created_at'].split()[3]
@@ -71,3 +73,4 @@ with open(out_file_name, 'w') as f_out:
         print file_name
             # print data
 # pprint.pprint(data)
+print count
