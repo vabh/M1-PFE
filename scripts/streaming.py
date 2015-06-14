@@ -29,8 +29,7 @@ while True:
             for tweet in tweets:
 
                 if tweet.get('text') and tweet.get('lang') == 'en':
-                    # print count, tweet.get('text')
-                    # print count
+                                    
                     count += 1
                     f_out.write(unicode(tweet))
                     # f_out.write(json.dumps(tweet))

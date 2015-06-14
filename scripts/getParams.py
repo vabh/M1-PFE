@@ -4,7 +4,7 @@ import os
 import glob
 import bz2
 
-tweets_path = '../tweets/iphone/'
+tweets_path = '../tweets/hillary/'
 
 os.chdir(tweets_path)
 file_list = []
@@ -12,7 +12,7 @@ for f in glob.glob("*.txt.bz2"):
     file_list.append(f)
 os.chdir('../../scripts')
 
-out_file_name = 'iphone_data.txt'
+out_file_name = 'hillary_data.txt'
 
 proccessed_ids = {}
 count = 0
@@ -26,12 +26,13 @@ with open(out_file_name, 'w') as f_out:
             for line in f:
                 try:
                     l = json.loads(line)
+                    # print line
                 except:
                     print file_name
                     continue
 
                 if l['id'] in proccessed_ids:
-                    print "seen"
+                    # print "seen"
                     continue
 
                 count += 1
@@ -53,6 +54,11 @@ with open(out_file_name, 'w') as f_out:
 
                 if 'hashtags' in l:
                     data['hashtags'] = l['hashtags']
+
+                if 'entities' in l:
+                    for hashtag in data['entities']['hashtags']:
+                        data['hashtags'].append(hashtag['text'])
+                        print hashtag['text']
 
                 if 'followers_count' in l['user']:
                     data['user_followers'] = l['user']['followers_count']
