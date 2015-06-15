@@ -136,19 +136,23 @@
 
 % Define document title and author
       \title{How social links are created on Twitter, and what is their privacy implication?\\
-    (Analysis of hashtag behavior (relations? ) to identify unusual user activities.)}
+    (Analysis of hashtag relations to identify unusual user activities on Twitter.)}
       \author{Anuvabh Dutt, Anastasia Kuznetsova \\ \textit{under the supervision of} Arnaud Legout
-%     \thanks{Advisor: Arnaud Legout, Inria}
+      \thanks{( dutt.anuvabh, kuznetsova.anastasia )@etu.unice.fr, arnaud.legout@inria.fr}
     }
+    
+    \date{}
     
 %     \markboth{
 %     tseminar Digitale Kommunikationssysteme}{}
       \maketitle
 
-% Write abstract here
+% Just to fill
 \begin{abstract}
-      The short abstract (50-80 words) is intended to give the reader an overview of the work.
+\textbf{In this work we focus on the detection of users with suspicious behavior in Twitter. As an online social networking service, Twitter needs a methodology that will allow to unambiguously classify the content that is created by users. The classification of content is critical for keeping user attention that will help Twitter to provide better and more relevant services and increase its income. We are using different approaches for the detection of suspicious content. We analyze behavior of popular users on Twitter and their influence on their followers and other users. We study the content of a tweet, to understand the characteristics of a hashtag. Basing on these characteristics, we provide a method that can detect hashtags used by accounts that might be engaging in spamming or opinion manipulation activities.}
 \end{abstract}
+\vspace*{\fill}
+\pagebreak
 
 % Each section begins with a \section{title} command
 \section{Introduction}
@@ -156,22 +160,21 @@
 % \PARstart{T}{witter} 
 Twitter is an online social network in which registered users can read and send short messages of 140 characters, called tweets. As of March 2015, Twitter has 302 million active users~\cite{twitter_stats}. Twitter is a directed social network. The relations between users on the network are that of ‘followers’ and ‘followees’. This is different from other social networks like Facebook where relations between users are mutual. The central point of Twitter's business is the tweet. Consequently, Twitter wants to have a method to classify tweet content as either good or bad. Currently there are spam filters but they do not work with a 100\% accuracy.  We take an alternate approach to classifying tweets. We study the way content in a tweet is connected to other posts and use this relation for the classification, by trying to identify users who are likely to post spam content. \\
     
-Twitter hosts a large number of influential people. There are many heads of states, scientists, actors, sportspeople who are active Twitter users. Twitter provides a very convenient platform for these people to connect with their followers. These users, by virtue of being well known, have a lot of followers and they can reach a large audience with less effort. Due to this they also have a certain level of influence over the network. Posts of these users have a very high probability to become ‘viral’ as compared to ordinary users. Tweets of popular users are tweeted again by their followers in a procedure called ‘retweeting’. The number of retweets of a tweet is a measure of the popularity of the post. Additionally hashtags \footnote{A hashtag is a type of label or metadata tag used on social network and microblogging services which makes it easier for users to find messages with a specific theme or content. ~\cite{wikihashtag}} used by such users are used by their followers who want to join in the conversation. For example during Roland Garros 2015, people who wanted to post about the event, included in their tweets, the hashtag \#RG15. Users who wanted to see what other people were posting about this event just had to search for this hashtag. These hashtags form a target for spam. Spammers can use such hashtags to piggyback their spam content which is usually unrelated to the original hashtag. Hashtags are the entity that users use to post about any given topic. As a result popular topics directly imply that the corresponding hashtags will be present in a large number of tweets and also these tweets will have a big audience. These are also called hashtag campaigns. In such campaigns, users are invited to include this specific hashtag in their tweets. This gives spammers a target hashtag for their campaigns. Spammers include a popular hashtag in their tweets to reach Twitter users. \\
+Twitter hosts a large number of influential people. There are many heads of states, scientists, actors, sportspeople who are active Twitter users. Twitter provides a very convenient platform for these people to connect with their followers. These users, by virtue of being well known, have a lot of followers and they can reach a large audience with less effort. Due to this they also have a certain level of influence over the network. Posts of these users have a very high probability to become ``viral'' as compared to ordinary users. Tweets of popular users are tweeted again by their followers in a procedure called \textbf{retweeting}. The number of retweets of a tweet is a measure of the popularity of the post. To signify the topic to which a tweet is related to, users add \textbf{hashtags} with the tweet text. ``A hashtag is a type of label or metadata tag used on social network and microblogging services which makes it easier for users to find messages with a specific theme or content.''~\cite{wikihashtag}. Hashtags used by popular users are used by their followers who want to join in the conversation. For example during Roland Garros 2015, people who wanted to post about the event, included in their tweets, the hashtag \#RG15. Users who wanted to see what other people were posting about this event just had to search for this hashtag. These hashtags form a target for spam. Spammers can use such hashtags to piggyback their spam content which is usually unrelated to the original hashtag. Hashtags are the entity that users use to post about any given topic. As a result popular topics directly imply that the corresponding hashtags will be present in a large number of tweets and also these tweets will have a big audience. These are called hashtag campaigns. In such campaigns, users are invited to include this specific hashtag in their tweets. This gives spammers a target hashtag for their campaigns. Spammers include a popular hashtag in their tweets to reach other Twitter users. \\
 
-In this work we study the influencing power of popular users and the role popular hashtags play in the context of spam activity in the network. The effect of the activity of popular users is important because they have a large influence. This influence is critical as they can manipulate the behavior of other users. In times of elections, a popular user has the power to align the thoughts of their followers with their own. If such an account is compromised, the intruder might cause misinformation to propagate. We measured this influence in terms of the activity of their followers after they post a tweet. Gaining a large number of followers for a spam acccount is unlikely and so a spammer has the other option of trying to spread spam content using hashtags. The hope of the spammer is that a user will search for a popular hashtag and as a result be exposed to the spam content. With regards to the hashtags and their role in the spreading of spam, we present a technique that can be used to weed out spam tweets from valid tweets, given a specific hashtag campaign. \\
+In this work we study the influencing power of popular users and the role popular hashtags play in the context of spam activity in the network. The effect of the activity of popular users is important because they have a large influence. This influence is critical as they can manipulate the behavior of other users. In times of elections, a popular user has the power to align the thoughts of their followers with their own. If such an account is compromised, the intruder might cause misinformation to propagate. We measure this influence in terms of the activity of their followers after they post a tweet. Gaining a large number of followers for a spam account is unlikely and so a spammer has the other option of trying to spread spam content using hashtags. The hope of the spammer is that a user will search for a popular hashtag and as a result be exposed to the spam content. With regards to the hashtags and their role in the spreading of spam, we present a technique that can be used to weed out spam tweets from valid tweets, given a specific hashtag campaign. \\
 
-In section 4, we describe the influence of popular users on the regular users in Twitter. To qualify as popular a user needs to have a large audience. In section 5, we discuss the concept of the hashtag graph and how it can be used to identify users with suspicious activity. In section 5.5, we present the details of our findings.
+In section 4, we describe the influence of popular users on the regular users in Twitter. To qualify as popular a user needs to have a large audience. In section 5, we discuss the concept of the hashtag graph and how it can be used to identify users with suspicious activity. In section 5.5, we present the details of our findings. We list the users whom we detected as having suspicious activities and describe the sepecifics of their activities.
 
 
 % Main Part
 \section{Related Work}
 
-Thomas \textit{et al.}~\cite{thomas_paper} describe the general characteristics of spam activity in Twitter. The paper describes the tools used by spammers and the how they carry out their activities. Our work uses this information to perform the experiments. The paper does not present any methods to deal with spam activity. Other work on spam activity on twitter has involved machine learning techniques and user relations. One example is the work of Benevenuto \textit{et al.}~\cite{benevenuto_paper}. Our work does not use such parameters. We focus on the tweet content itself and how each post is connected to the other posts in Twitter. We construct a graph and obtain our results by studying the properties of this graph. We believe that this reduces subjective factors and relies more on objective facts.  
-% [insert twitter spam papers] [insert study popularity of users]
+Thomas \textit{et al.}~\cite{thomas_paper} describe the general characteristics of spam activity in Twitter. The paper describes the tools used by spammers and the how they carry out their activities but does not present any methods to deal with spam activity. Our work uses this information to perform the experiments and present methods to deal with spammers. Other work on spam activity on Twitter has involved machine learning techniques and user relations. One example is the work of Benevenuto \textit{et al.}~\cite{benevenuto_paper}. Our work does not use such parameters. We focus on the tweet content itself and how each post is connected to the other posts in Twitter. We construct a graph and obtain our results by studying the properties of this graph. We believe that this reduces subjective factors and relies more on objective facts.  
 
 \section{Datasets}
 
-We obtained our datasets by using the publicly available Twitter API. We used the REST API to collect tweets related to hashtags and search terms. The collection was done several times during the course of the project work. We used the Streaming API to collect a 1\% sample of tweets over five days (3/6/2015 - 8/6/2015). For this purpose we built a crawler and deployed in on our personal computers. Using the crawler we obtained tweets related to the search terms that we queried for. The public API is rate limited, meaning that we can query for a limited time and for a limited number of tweets. To get around this problem we used multiple accounts. Our keywords were chosen based on their popularity as either a hashtag or as a search term. \\
+We obtained our datasets by using the publicly available Twitter API. We used the REST API to collect tweets related to hashtags and search terms. The collection was done several times during the course of the project work. We used the Streaming API to collect a 1\% sample of tweets over five days (3/6/2015 - 8/6/2015). For this purpose we built a crawler and deployed it on our personal computers. Using the crawler we obtained tweets related to the search terms that we queried for. The public API is rate limited, meaning that we can query for a limited time and for a limited number of tweets. To get around this problem we used multiple accounts. Our keywords were chosen based on their popularity as either a hashtag or as a search term. \\
 
 Number of tweets collected are:
 \begin{itemize}
@@ -186,7 +189,7 @@ Further details of specific data sets come inside the other sections when we des
 
 \section{Influence of Popular Users}
 
-Many users on twitter have a very large number of followers ( \textgreater 1 000 000). It is interesting to study the influence that these users have on their audience because they have the ability to reach a significant portion of the Twitter users and as such could have a pivotal role in information propagation in the Twitter social network. To study this behavior, we decide to observe their activities with respect to a global event. We chose the event \#HappyPiDay. This day was a global event to commemorate the number  $\pi$. If we represent the date as mm/dd/yy we get 3/14/15 on 3rd March 2015, which are the first few digits of $\pi$.
+Many users on twitter have a very large number of followers ( $>$ 1 000 000). It is interesting to study the influence that these users have on their audience because they have the ability to reach a significant portion of the Twitter users and as such could have a pivotal role in information propagation in the Twitter social network. To study this behavior, we decide to observe their activities with respect to a global event. We chose the event \#HappyPiDay. This day was a global event to commemorate the number  $\pi$. If we represent the date as mm/dd/yy we get 3/14/15 on 3rd March 2015, which are the first few digits of $\pi$.
 \\
 
 For our analysis, we collected public tweets for 3rd March 2015. Figure~\ref{fig:piday_freq_tweets} shows the number of tweets posted per minute over a twenty four hour period. There are three peaks in the figure which mean that at those times the number of tweets being posted increased significantly.
@@ -270,7 +273,7 @@ Figure~\ref{fig:hillary_freq_tweets} represents the number of tweets posted with
 \item 25th May - 3rd June
 \end{itemize}
 
-Total collected tweets is 159582. We see a peak on the 13th of April, when the hashtag \#Hillary2016 was created. After 14th of April we observe a periodical behavior with a decreasing trend till the 5th of May. The periodicity is due to the time of a day. Four peaks between May 5th ans May 10th are due to the external events and news about Hillary Clinton appeared in this period which caused discussions in social networks. The general trend for the \#Hillary2016 is decreasing, from 24380 tweets on 13th of April to 2193 tweets on 30th of May with the average of 5910 tweets per day. 
+Total collected tweets is 159582. We see a peak on the 13th of April, when the hashtag \#Hillary2016 was created. After 14th of April we observe a periodical behavior with a decreasing trend till the 5th of May. The periodicity is due to the time of a day. Four peaks between May 5th ans May 10th are due to the external events and news about Hillary Clinton appeared in this period which caused discussions in social networks. The general trend for the \#Hillary2016 is decreasing, from 24380 tweets on 13th of April to 2193 tweets on 30th of May with an average of 5910 tweets per day. \\
 
     
       \begin{figure}[!hbt]
@@ -281,7 +284,7 @@ Total collected tweets is 159582. We see a peak on the 13th of April, when the h
             \end{center}
       \end{figure}
     
-To conduct the same analysis as for the \#HappyPiDay, we calculated the same metrics that are presented in the Table~\ref{tab:numberoftweets_hillary}. As we can see, the percent of unique tweets in both datasets if very close, 38,2\% for \#HappyPiDay and 32,4\% for \#Hillary2016. GreeBut in the case with \#Hillary2016 top 2 retweeted tweets only take 7,7\% of all posted tweets, their impact on the tweet frequency for this time period is lower because of size of the dataset. On average each tweet is retweeted 9 times, that gives us the big number of retweets in general, without those retweets, that could significantly impact the overall frequency of tweets. This supports the assumption that number of tweets posted for a topic does not depend a lot on the activity of popular users.
+To conduct the same analysis as for the \#HappyPiDay, we calculated the same metrics that are presented in Table~\ref{tab:numberoftweets_hillary}. As we can see, the percentage of unique tweets in both datasets if very close, 38.2\% for \#HappyPiDay and 32.4\% for \#Hillary2016. In the case of \#Hillary2016, top 2 retweeted tweets are only 7.7\% of all posted tweets. Their impact on the tweet frequency for this time period is lower because of size of the dataset. On average each tweet is retweeted 9 times, that gives us the big number of retweets in general, without those retweets, that could significantly impact the overall frequency of tweets. This supports the fact that number of tweets posted for a topic does not depend a lot on the activity of popular users.
       
     \begin{table}[!hbt]
             \begin{center}
@@ -314,7 +317,7 @@ To conduct the same analysis as for the \#HappyPiDay, we calculated the same met
 In this section we describe hashtags, the entity used in a social network to coordinate communication relating to a specific topic. We then describe the Hashtag Graph that we use to represent the connectedness among hashtags in different tweets. We also define the metrics that we use in our analysis.
 
 \subsection{Hashtags}
-In a social network, a hashtag serves as a tag for coordinating communication. It is  a word prefixed with the ‘\#’ symbol. A hashtag helps in content discovery and aids people to find all information related to a specific topic. In Twitter a user has the ability to search for a hashtag and view all tweets that contain that hashtag. The hashtag can serve as a weapon for spammers. If a hashtag becomes popular, there will be a large number of tweets that contain that specific hashtag. Spammers can include the hashtag in their tweets and be sure that people will view it. This serves as a convenient medium for spreading spam since the spammer does not even have to rely on the social links of users in the network. All that is required to do is identify popular hashtags and use those. Twitter lists the most popular hashtags at any given time. This aids the discovery of popular terms which are likely to be used in hashtags.\\
+In a social network, a hashtag serves as a tag for coordinating communication. It is  a word prefixed with the ``\#'' symbol. A hashtag helps in content discovery and aids people to find all information related to a specific topic. In Twitter, a user has the ability to search for a hashtag and view all tweets that contain that hashtag. The hashtag can serve as a weapon for spammers. If a hashtag becomes popular, there will be a large number of tweets that contain that specific hashtag. Spammers can include the hashtag in their tweets and be sure that people will view it. This serves as a convenient medium for spreading spam since the spammer does not even have to rely on the social links of users. All that is required to do is identify popular hashtags and use those. Twitter lists the most popular hashtags at any given time. This aids the discovery of popular terms which are likely to be used as hashtags.\\
 % describe evolution 
 
       \begin{figure}[!hbt]
@@ -325,9 +328,9 @@ In a social network, a hashtag serves as a tag for coordinating communication. I
             \end{center}
       \end{figure}
 
-Figure~\ref{fig:hashtagevolution} shows the growth of hashtags in the Twitter network over a period of five days. The bumps correspond to diurnal changes. We observe that during the period of each day, for a certain time interval the rate at which new hashtags are introduced increases and then decreases to a previous value. On average there are approximately 74000 new hashtags every day. Out of these new hashtags some will become popular and in turn be potential targets for spammers. This increases the importance of studying the behavior of these hasthtags the role they play in social networks. \\
+Figure~\ref{fig:hashtagevolution} shows the growth of hashtags in the Twitter network over a period of five days. The bumps correspond to diurnal changes. We observe that during the period of each day, for a certain time interval the rate at which new hashtags are introduced increases and then decreases to a previous value. On average there are approximately 74000 new hashtags every day. Out of these new hashtags some will become popular and in turn be potential targets for spammers. This increases the importance of studying the behavior of these hasthtags and the role they play in social networks. \\
 
-Multiple hashtags can occur in a tweet to give a sense of the subjects to which a tweet might relate to. We get a notion of connectedness among hashtags. To study this property we focused on the previously mentioned datasets for \#HappyPiDay and \#Hillary2016.
+Multiple hashtags can occur in a tweet to give a sense of the subjects to which a tweet might relate to. We get a notion of connectedness among hashtags. To study this property we focus on the previously mentioned datasets for \#HappyPiDay and \#Hillary2016.
 
 
 \subsection{The Graph}
@@ -341,18 +344,18 @@ We introduce the concept of the hashtag graph. We construct this graph from the 
 \textbf{Edge weight} is defined as the number of times two hashtags occur together. This gives an idea about the affinity of one hashtag with the other and conveys how often both occur together.
 \end{itemize}
 
-As an example of the hashtag graph that could be created, we took 5 tweets from the dataset, collected for \#HappyPiDay to create the graph. Figure~\ref{fig:tweets_piday} shows tweets as they appear in the stream after the search for \#HappyPiDay hashtag.
+As an example of the hashtag graph that could be created, we took 5 tweets from the dataset of \#HappyPiDay to create the graph. Figure~\ref{fig:tweets_piday} shows tweets as they appear in the stream after the search for \#HappyPiDay hashtag.
 \\
 
   \begin{figure}[!hbt]
             \begin{center}
             \includegraphics[width=120mm]{Tweets_piday.png}
-            \caption{A subset of 5 tweets from dataset collected for the \#HappyPiDay.}
+            \caption{5 tweets from dataset collected for \#HappyPiDay.}
             \label{fig:tweets_piday}
             \end{center}
       \end{figure}
     
-From these tweets we extract the set of hashtags. The collected set of hashtags is:
+From these tweets we extract the following set of hashtags:
 
 \begin{enumerate}
 \item \#TakeBackYourData, \#SXSW, \#Gratitude, \#HappyPiDay
@@ -363,10 +366,10 @@ From these tweets we extract the set of hashtags. The collected set of hashtags 
 \end{enumerate}
 
 
-Each hashtag represents a distinct node of a graph. First time two hashtags appear together in the same tweet, we create an edge between them. Each time we observe same hashtags present together in the new tweet, we increment the weight of an edge between them by one.
+Each hashtag represents a node of the graph. The first time two hashtags appear together in the same tweet, we create an edge between them. Each time we observe same hashtags present together in the new tweet, we increment the weight of the edge between them by one.
 \\
 
-Figure~\ref{fig:tweets_graph_piday.png} represents the hashtag graph created from chosen tweets. Since \#HappyPiDay was the initial hashtag that we were collecting data for, it appears in all of the tweets and is connected to all of the other hashtags. Two hashtags \#Supernatural and \#IncomeInequality are only connected to \#HappyPiDay because there are no other hashtags in tweets with them. Along with the \#HappyPiDay, three hashtags (\#TakeBackYourData, \#SXSW, \#Gratitude) form a clique of hashtags, because they are present in the same tweet and are connected with each other. The notion of the clique of hashtags is described in the following section~\ref{cluques_subsection}.
+Figure~\ref{fig:tweets_graph_piday.png} represents the hashtag graph created from chosen tweets. Since \#HappyPiDay was the initial hashtag that we collected data for, it appears in all of the tweets and is connected to all of the other hashtags. Two hashtags \#Supernatural and \#IncomeInequality are only connected to \#HappyPiDay because there are no other hashtags in tweets with them. Along with the \#HappyPiDay, three hashtags (\#TakeBackYourData, \#SXSW, \#Gratitude) form a clique because they are present in the same tweet and are connected with each other. The notion of the clique of hashtags is described in section~\ref{cliques_subsection}.
 
     
         \begin{figure}[!hbt]
@@ -377,8 +380,8 @@ Figure~\ref{fig:tweets_graph_piday.png} represents the hashtag graph created fro
             \end{center}
       \end{figure}
 
-\subsection{Cliques and user activity}\label{cluques_subsection}
-In the hashtag graph there are cliques formed by hashtags. An alternate representation with the same meaning is a set of hashtags which appear together in a tweet. An example of a clique of hashtags is shown on the Figure~\ref{fig:tweets_graph_piday.png}. The set of four hashtags (\#HappyPiDay, \#TakeBackYourData, \#SXSW, \#Gratitude) form a clique because all these hashtags appear in one tweet. An interesting result that we obtained is that users which were tweeting using the same set of hashtags formed a network amongst themselves. They had the same activity as shown in Figure~\ref{fig:spam_user_times}. We selected this specific set of hashtags manually. For future work we want to develop a classifier to select the hashtag set.
+\subsection{Cliques and user activity}\label{cliques_subsection}
+In the hashtag graph there are cliques formed by hashtags. An alternate representation with the same meaning is a set of hashtags which appear together in a tweet. An example of a clique of hashtags is shown in Figure~\ref{fig:tweets_graph_piday.png}. The set of four hashtags (\#HappyPiDay, \#TakeBackYourData, \#SXSW, \#Gratitude) form a clique because all these hashtags appear in one tweet. An interesting result that we obtained is that users which were tweeting using the same set of hashtags formed a network amongst themselves. They had the same activity as shown in Figure~\ref{fig:spam_user_times}. We selected this specific set of hashtags manually. For future work we want to develop a classifier to select the hashtag set.
 \\
 
 Figure~\ref{fig:spam_user_times} shows the time when an account posted a tweet. Each dot corresponds to the time a tweet was posted. In the figure we see that all the accounts stopped tweeting at the same time. Moreover their posts follow a similar pattern. The time interval when some of the accounts do not post any tweet overlap completely. Such behaviour shows strong correlation between the tweet times of these accounts. These accounts are probably part of a botnet. On inspecting some these accounts, we observe that all of these accounts tweet using a set of hashtags, out of which one is a popular search term like:
@@ -413,7 +416,7 @@ After creating the graph we computed the frequency of nodes, the degree of nodes
             \end{center}
       \end{figure}
     
-Figure~\ref{fig:cdf_hillary_piday_frequency} represents the cumulative distribution function of the frequency of hashtags. For all the campaigns, 50\% of hashtags appear once in the entire set of tweets. The outlier has the highest frequency as it is the hashtag for which we had crawled the data. \\
+Figure~\ref{fig:cdf_hillary_piday_frequency} represents the cumulative distribution function of the frequency of hashtags. For all the campaigns, 50\% of hashtags appear once in the entire set of tweets. The outlier has the highest frequency as it is the hashtag for which we collected data. \\
 
       \begin{figure}[!hbt]
             \begin{center}
@@ -436,11 +439,24 @@ For the \#HappyPiDay campaign, the weights of edges (number of times two hashtag
 We conclude that even if hashtags in the \#HappyPiDay data set are connected to a smaller number of hashtags, the degrees of nodes in both data sets are distributed similarly and depend mostly on the size of dataset and the frequency of a hashtag. \\
 
 \subsubsection{Frequency and degree dependence}
-\textbf{Frequency} of a hashtag is an important metric that allows us to understand if the hashtag is popular (if it has a high frequency). In this case its audience is wide and it allows to influence users that see tweets with this hashtag. If more users see the tweet with some advertisement, the click-throught rate \footnote{Click-throught rate - number of times the user clicked on the link divided by the number of times the link was shown.} of links embedded in the tweet will increase. This increases the value of the marketing or advertising campaigns as well as the value of spam campaigns. Hence, studying the behavior of a hashtag frequency is critical for understanding the behavior of spammers or organized advertisement campaigns on Twitter.\\
+\textbf{Frequency} of a hashtag is an important metric that allows us to understand if the hashtag is popular (if it has a high frequency). In this case its audience is wide and it allows to influence users that see tweets with this hashtag. If more users see the tweet with some advertisement, the click-through rate \footnote{Click-through rate - number of times the user clicked on the link divided by the number of times the link was shown.} of links embedded in the tweet will increase. This increases the value of the marketing or advertising campaigns as well as the value of spam campaigns. Hence, studying the behavior of a hashtag frequency is critical for understanding the behavior of spammers or organized advertisement campaigns on Twitter.\\
 
-Another important metric is the \textbf{degree} of a hashtag: the number of different hashtags with which it appears in the same tweet. This metric shows if the hashtag is related to a different number of topics. We observed that popular hashtags related to some topic have high frequency and degree. They are used in different tweet and with a big number of other hashtags. \\
+Another important metric is the \textbf{degree} of a hashtag: the number of different hashtags with which it appears in the same tweet. This metric shows if the hashtag is related to a different number of topics. We observed that popular hashtags related to some topic have high frequency and degree. They are used in different tweets and with a large number of other hashtags. \\
 
-In the Table~\ref{tab:graph_freq_degree} we show an example of calculated frequency and degree for a subset of tweets extracted from the \#HappyPiDay dataset. The content of the tweets is shown on the Figure~\ref{fig:tweets_piday}. 
+In the Table~\ref{tab:graph_freq_degree} we show an example of calculated frequency and degree for a subset of tweets extracted from the \#HappyPiDay dataset. The content of the tweets is shown on the Figure~\ref{fig:tweets_piday}. There are different characteristics of hashtags depending on the above mentioned metrics:
+
+\begin{itemize}
+
+\item Popular hashtags have a high frequency and a high degree.
+
+\item Hashtags of medium popularity have moderate values for frequency and degree. They are related to the same topic but are used by a smaller amount of users.
+
+\item Custom user hashtags which are very specific to a topic and are used by a very small fraction of users.
+
+\item Hashtags not related to the initial one and having high frequency and small degree. They are connected to a small set of hashtags.
+\end{itemize}
+
+The last type of hashtag is an indication that they are being used by users with suspicious activity. \\
 
       \begin{table}[!hbt]
             \begin{center}
@@ -466,20 +482,6 @@ In the Table~\ref{tab:graph_freq_degree} we show an example of calculated freque
             \end{center}
       \end{table}
 
-There are different characteristics of hashtags depending on the above mentioned metrics:
-
-\begin{itemize}
-
-\item Popular hashtags have a high frequency and a high degree.
-
-\item Hashtags of medium popularity have moderate values for frequency and degree. They are related to the same topic but are used by a smaller amount of users.
-
-\item Custom user hashtags which are very specific to a topic and are used by a very small fraction of users.
-
-\item Hashtags not related to the initial one and having high frequency and small degree. They are connected to a small set of hashtags.
-\end{itemize}
-
-The last type of hashtag is an indication that they are being used by users with suspicious activity. \\
 
 %    \begin{figure}[!hbt]
 %           \begin{center}
@@ -702,7 +704,7 @@ We can conclude that our method is able to identify hashtags which are mostly us
 \section{Conclusion}
 Our work studies the impact of influence of users on their followers and the relations between tweets. We study how users with a large audience impact the tweeting behavior of their followers. We conclude that they result in an impulse where there is a increase of tweets for a very short time period. Popular users do not significantly alter the behavior of other Twitter users. We also observe that the number of original posts of users stay constant and they are more than the retweets of these popular users. \\
 
-We take a different approach in studying the behavior of hashtags. We choose hashtag campaigns and study how users share information using such a hashtag. We discover that spammers try to piggyback on popular hashtags by including the popular hashtag along with their content. We uncover a large group of coordinated accounts that use the same set of hashtags for tweeting. We finally identify users having suspicious activity by studying the created graph. We see that hashtags which have low connections to the rest of the graph are used by these suspicious users. We are also able to identify some of the accounts that use these hashtags as users with unusual activity.
+We take a different approach in studying the behavior of hashtags. We choose hashtag campaigns and study how users share information using hashtags. We discover that spammers try to piggyback on popular hashtags by including the popular hashtag along with their content. We uncover a large group of coordinated accounts that use the same set of hashtags for tweeting. We finally identify users having suspicious activity by studying the created graph. We see that hashtags which have low connections to the rest of the graph are used by these suspicious users. We are also able to identify some of the accounts that use these hashtags as users with unusual activity.
 
 \section{Future Work}
 
@@ -745,15 +747,15 @@ Another area that we can work on is using a sentiment analysis engine to increas
     
     \bibitem{twitter_rules}
     Official Twitter rules for users.
-    \url{https://support.twitter.com/articles/18311-the-twitter-rules}
+    \url{https://support.twitter.com/articles/18311-the-twitter-rules}, accessed 11th June, 2015.
     
     \bibitem{itunes_luzmo}
       The link to LUZMO (Light Effects Powerful Photo Editor Blend Light Leaks Textures and Overlays) application on iTunes.
     \url{https://itunes.apple.com/th/app/luzmo/id681205606?mt=8}, accessed 10th June, 2015.
     
     \bibitem{homeshopbuzz}
-    The link to the Twitter account of @homeshopbuzz user, accessed 11th June, 2015.
-    \url{https://twitter.com/homeshopbuzz}
+    The link to the Twitter account of @homeshopbuzz user.
+    \url{https://twitter.com/homeshopbuzz}, accessed 11th June, 2015.
 
 \end{thebibliography}
 
