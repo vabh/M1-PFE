@@ -135,17 +135,17 @@
 \begin{document}
 
 % Define document title and author
-      \title{How social links are created on Twitter, and what is their privacy implication?\\
+	\title{How social links are created on Twitter, and what is their privacy implication?\\
     (Analysis of hashtag relations to identify unusual user activities on Twitter.)}
-      \author{Anuvabh Dutt, Anastasia Kuznetsova \\ \textit{under the supervision of} Arnaud Legout
-      \thanks{( dutt.anuvabh, kuznetsova.anastasia )@etu.unice.fr, arnaud.legout@inria.fr}
+	\author{Anuvabh Dutt, Anastasia Kuznetsova \\ \textit{under the supervision of} Arnaud Legout
+ 	\thanks{(dutt.anuvabh, kuznetsova.anastasia)@etu.unice.fr, arnaud.legout@inria.fr}
     }
     
     \date{}
     
-%     \markboth{
+% 	\markboth{
 %     tseminar Digitale Kommunikationssysteme}{}
-      \maketitle
+	\maketitle
 
 % Just to fill
 \begin{abstract}
@@ -156,11 +156,11 @@
 
 % Each section begins with a \section{title} command
 \section{Introduction}
-      % \PARstart{}{} creates a tall first letter for this first paragraph
+	% \PARstart{}{} creates a tall first letter for this first paragraph
 % \PARstart{T}{witter} 
 Twitter is an online social network in which registered users can read and send short messages of 140 characters, called tweets. As of March 2015, Twitter has 302 million active users~\cite{twitter_stats}. Twitter is a directed social network. The relations between users on the network are that of ‘followers’ and ‘followees’. This is different from other social networks like Facebook where relations between users are mutual. The central point of Twitter's business is the tweet. Consequently, Twitter wants to have a method to classify tweet content as either good or bad. Currently there are spam filters but they do not work with a 100\% accuracy.  We take an alternate approach to classifying tweets. We study the way content in a tweet is connected to other posts and use this relation for the classification, by trying to identify users who are likely to post spam content. \\
     
-Twitter hosts a large number of influential people. There are many heads of states, scientists, actors, sportspeople who are active Twitter users. Twitter provides a very convenient platform for these people to connect with their followers. These users, by virtue of being well known, have a lot of followers and they can reach a large audience with less effort. Due to this they also have a certain level of influence over the network. Posts of these users have a very high probability to become ``viral'' as compared to ordinary users. Tweets of popular users are tweeted again by their followers in a procedure called \textbf{retweeting}. The number of retweets of a tweet is a measure of the popularity of the post. To signify the topic to which a tweet is related to, users add \textbf{hashtags} with the tweet text. ``A hashtag is a type of label or metadata tag used on social network and microblogging services which makes it easier for users to find messages with a specific theme or content.''~\cite{wikihashtag}. Hashtags used by popular users are used by their followers who want to join in the conversation. For example during Roland Garros 2015, people who wanted to post about the event, included in their tweets, the hashtag \#RG15. Users who wanted to see what other people were posting about this event just had to search for this hashtag. These hashtags form a target for spam. Spammers can use such hashtags to piggyback their spam content which is usually unrelated to the original hashtag. Hashtags are the entity that users use to post about any given topic. As a result popular topics directly imply that the corresponding hashtags will be present in a large number of tweets and also these tweets will have a big audience. These are called hashtag campaigns. In such campaigns, users are invited to include this specific hashtag in their tweets. This gives spammers a target hashtag for their campaigns. Spammers include a popular hashtag in their tweets to reach other Twitter users. \\
+Twitter hosts a large number of influential people. There are many heads of states, scientists, actors, sportspeople who are active Twitter users. Twitter provides a very convenient platform for these people to connect with their followers. These users, by virtue of being well known, have a lot of followers and they can reach a large audience with less effort. Due to this they also have a certain level of influence over the network. Posts of these users have a very high probability to become ``viral'' as compared to ordinary users. Tweets of popular users are tweeted again by their followers in a procedure called \textbf{retweeting}. The number of retweets of a tweet is a measure of the popularity of the post. To signify the topic to which a tweet is related to, users add \textbf{hashtags} in the tweet text. ``A hashtag is a type of label or metadata tag used on social network and microblogging services which makes it easier for users to find messages with a specific theme or content.''~\cite{wikihashtag}. Hashtags used by popular users are used by their followers who want to join in the conversation. For example during Roland Garros 2015, people who wanted to post about the event, included in their tweets, the hashtag \#RG15. Users who wanted to see what other people were posting about this event just had to search for this hashtag. These hashtags form a target for spam. Spammers can use such hashtags to piggyback their spam content which is usually unrelated to the original hashtag. As a result popular topics directly imply that the corresponding hashtags will be present in a large number of tweets and also these tweets will have a big audience. These are called hashtag campaigns. In such campaigns, users are invited to include this specific hashtag in their tweets. This gives spammers a target hashtag for their campaigns. Spammers include a popular hashtag in their tweets to reach other Twitter users. \\
 
 In this work we study the influencing power of popular users and the role popular hashtags play in the context of spam activity in the network. The effect of the activity of popular users is important because they have a large influence. This influence is critical as they can manipulate the behavior of other users. In times of elections, a popular user has the power to align the thoughts of their followers with their own. If such an account is compromised, the intruder might cause misinformation to propagate. We measure this influence in terms of the activity of their followers after they post a tweet. Gaining a large number of followers for a spam account is unlikely and so a spammer has the other option of trying to spread spam content using hashtags. The hope of the spammer is that a user will search for a popular hashtag and as a result be exposed to the spam content. With regards to the hashtags and their role in the spreading of spam, we present a technique that can be used to weed out spam tweets from valid tweets, given a specific hashtag campaign. \\
 
@@ -199,38 +199,38 @@ They correspond to the activity of a popular user. At those times a popular user
 In Figure~\ref{fig:piday_freq_tweets}, the blue line shows the number of original tweets that are being posted. These tweets are not retweets. The original tweets form a peak between 13:00 and 14:00 GMT [9:00 and 10:00 ET]. This time is the ``$\pi$ time''. The timestamp at this instant is 3/14/15 9:26:23, corresponding to the first digits of $\pi$.
 \\
 
-Peaks are the result of activity of popular users or because of a global event. Popular users initiate an increase in tweets since they have a large number of followers. However, from Figure~\ref{fig:piday_freq_tweets} we observe that this activity is like an impulse. It lasts for a short time and does not significantly change user behaviour. In this dataset, the number of unique tweets stayed almost the same throughout the time period and was not affected much by the activities of the popular users.
+Peaks are the result of activity of popular users or because of a global event. Popular users initiate an increase in tweets since they have a large number of followers. However, from Figure~\ref{fig:piday_freq_tweets} we observe that this activity is like an impulse. It lasts for a short time and does not significantly change user behavior. In this dataset, the number of unique tweets stayed almost the same throughout the time period and was not affected much by the activities of the popular users.
 \\
-      
-%     \begin{figure}[!hbt]
-%           \begin{center}
-%           \includegraphics[width=\columnwidth]{1_PidayTweetsFrequency.png}
-%           \caption{Frequency of tweets posted by users per minute for \#HappyPIday}
-%           \label{fig:piday_freq_tweets}
-%           \end{center}
-%     \end{figure}
+	
+%	\begin{figure}[!hbt]
+%		\begin{center}
+%		\includegraphics[width=\columnwidth]{1_PidayTweetsFrequency.png}
+%		\caption{Frequency of tweets posted by users per minute for \#HappyPIday}
+%		\label{fig:piday_freq_tweets}
+%		\end{center}
+%	\end{figure}
     
     \begin{table}[!hbt]
-            \begin{center}
-            \caption{Different categories of tweets for \#HappyPiDay}
-            \label{tab:numberoftweets_piday}
-            \begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|p{2cm}|}
-                  \hline
-                   & Number of tweets & Percent of number of tweets & Number of followers \\
+		\begin{center}
+		\caption{Different categories of tweets for \#HappyPiDay}
+		\label{tab:numberoftweets_piday}
+		\begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|p{2cm}|}
+			\hline
+			 & Number of tweets & Percent of number of tweets & Number of followers \\
             \hline
-                  Total & 18 543 & 100\% & \\
-                  \hline
-                  Unique & 7 085  &  38,3\%  & \\
-                  \hline
-                  @TheTweetOfGod user retweets & 2 425 & 13\% & 1 900 000\\
+			Total & 18 543 & 100\% & \\
+			\hline
+			Unique & 7 085  &  38,3\%  & \\
+			\hline
+			@TheTweetOfGod user retweets & 2 425 & 13\% & 1 900 000\\
             \hline
             @Cw-spn user retweets & 2 347 & 12,7\% & 1 010 000\\
-                  \hline
+			\hline
             Other retweets & 6 686 & 36\% &\\
-                  \hline
-            \end{tabular}
-            \end{center}
-      \end{table}
+			\hline
+		\end{tabular}
+		\end{center}
+	\end{table}
     
     
     \begin{figure}[!hbt]
@@ -254,14 +254,14 @@ Peaks are the result of activity of popular users or because of a global event. 
 
 Figure~\ref{fig:piday_audience} shows the audience of each posted tweet. The audience size is equal to the number of followers of the user who posts a tweet. We observe peaks in this figure as well. The peaks correspond to the number of followers of the popular users. We conclude that popular users have a very large audience size as compared to most users but their impact on the users posting tweets is not big. They do not significantly change the number of tweets being posted. 
 \\
-      
-%     \begin{figure}[!hbt]
-%           \begin{center}
-%           \includegraphics[width=\columnwidth]{2_Piday_Audience.png}
-%           \caption{Audience of tweets for \#HappyPIday. Computed as a sum of number of followers for each user that posted a tweet}
-%           \label{fig:piday_audience}
-%           \end{center}
-%     \end{figure}
+    	
+%	\begin{figure}[!hbt]
+%		\begin{center}
+%		\includegraphics[width=\columnwidth]{2_Piday_Audience.png}
+%		\caption{Audience of tweets for \#HappyPIday. Computed as a sum of number of followers for each user that posted a tweet}
+%		\label{fig:piday_audience}
+%		\end{center}
+%	\end{figure}
     
 We extend our analysis to another hashtag, \#Hillary2016. \#HappyPiDay was a global event and was not started by any specific user. It became popular because of the collective behaviour of Twitter users. To asses the behavior of a tweet frequency from another perspective, we decided to choose a hastag created and made popular by a specific user with a large audience. We chose the hashtag \#Hillary2016 which was started by the official account of Hillary Clinton right after she announced that she is running for the President of the United States in 2016. The account @HillaryClinton has 3,64m followers,a significant audience for tweets posted by this account. In addition, since the topic is related to the Hillary Clinton announcement, it is expected to have a long life cycle, at least up till November 8, 2016, the day of the presidential election in USA. This gives us the possibility to collect data for a long period of time as compared to \#HappyPiDay because the activity of users and the number of tweets related to this topic does not depend on the specific date.
 \\
@@ -276,37 +276,37 @@ Figure~\ref{fig:hillary_freq_tweets} represents the number of tweets posted with
 Total collected tweets is 159582. We see a peak on the 13th of April, when the hashtag \#Hillary2016 was created. After 14th of April we observe a periodical behavior with a decreasing trend till the 5th of May. The periodicity is due to the time of a day. Four peaks between May 5th ans May 10th are due to the external events and news about Hillary Clinton appeared in this period which caused discussions in social networks. The general trend for the \#Hillary2016 is decreasing, from 24380 tweets on 13th of April to 2193 tweets on 30th of May with an average of 5910 tweets per day. \\
 
     
-      \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{3_HillaryTweetsFrequency_with_retweets.png}
-            \caption{Frequency of tweets posted by users per minute for \#Hillary2016.}
-            \label{fig:hillary_freq_tweets}
-            \end{center}
-      \end{figure}
+    	\begin{figure}[!hbt]
+		\begin{center}
+		\includegraphics[width=\columnwidth]{3_HillaryTweetsFrequency_with_retweets.png}
+		\caption{Frequency of tweets posted by users per minute for \#Hillary2016.}
+		\label{fig:hillary_freq_tweets}
+		\end{center}
+	\end{figure}
     
 To conduct the same analysis as for the \#HappyPiDay, we calculated the same metrics that are presented in Table~\ref{tab:numberoftweets_hillary}. As we can see, the percentage of unique tweets in both datasets if very close, 38.2\% for \#HappyPiDay and 32.4\% for \#Hillary2016. In the case of \#Hillary2016, top 2 retweeted tweets are only 7.7\% of all posted tweets. Their impact on the tweet frequency for this time period is lower because of size of the dataset. On average each tweet is retweeted 9 times, that gives us the big number of retweets in general, without those retweets, that could significantly impact the overall frequency of tweets. This supports the fact that number of tweets posted for a topic does not depend a lot on the activity of popular users.
       
     \begin{table}[!hbt]
-            \begin{center}
-            \caption{Different categories of tweets for \#Hillary2016}
-            \label{tab:numberoftweets_hillary}
-            \begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|p{2cm}|}
-                  \hline
-                   & Number of tweets & Percent of number of tweets & Number of followers \\
+		\begin{center}
+		\caption{Different categories of tweets for \#Hillary2016}
+		\label{tab:numberoftweets_hillary}
+		\begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|p{2cm}|}
+			\hline
+			 & Number of tweets & Percent of number of tweets & Number of followers \\
             \hline
-                  Total & 159 582 & 100\% & \\
-                  \hline
-                  Unique & 51 664  &  32,4\%  & \\
-                  \hline
-                  @JessicaShores user retweets & 10 181 & 6,4\% & 18 000\\
+			Total & 159 582 & 100\% & \\
+			\hline
+			Unique & 51 664  &  32,4\%  & \\
+			\hline
+			@JessicaShores user retweets & 10 181 & 6,4\% & 18 000\\
             \hline
             @ComplexPop user retweets & 1 444 & 0,9\% & 19 300\\
-                  \hline
+			\hline
             Other retweets & 96 293 & 60,3\% &\\
-                  \hline
-            \end{tabular}
-            \end{center}
-      \end{table}
+			\hline
+		\end{tabular}
+		\end{center}
+	\end{table}
     
 
 % In the dataset we encountered a significant number of hashtag campaigns as a single tweet with a set of hashtags that was tweeted or retweeted many times by different users. Some of these campaigns were in support of Hillary Clinton and some were against her campaign. We observed that these tweets tend to have the specific set of hashtags: the “starter” hashtag \#Hillary2016 and a number of different hashtags, sometimes completely unrelated to the topic of the “starter” hashtag. \\
@@ -320,13 +320,13 @@ In this section we describe hashtags, the entity used in a social network to coo
 In a social network, a hashtag serves as a tag for coordinating communication. It is  a word prefixed with the ``\#'' symbol. A hashtag helps in content discovery and aids people to find all information related to a specific topic. In Twitter, a user has the ability to search for a hashtag and view all tweets that contain that hashtag. The hashtag can serve as a weapon for spammers. If a hashtag becomes popular, there will be a large number of tweets that contain that specific hashtag. Spammers can include the hashtag in their tweets and be sure that people will view it. This serves as a convenient medium for spreading spam since the spammer does not even have to rely on the social links of users. All that is required to do is identify popular hashtags and use those. Twitter lists the most popular hashtags at any given time. This aids the discovery of popular terms which are likely to be used as hashtags.\\
 % describe evolution 
 
-      \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{hashtagevolution_newtags.png}
-            \caption{Number of new hashtags observed in data collected for 5 days.}
-            \label{fig:hashtagevolution}
-            \end{center}
-      \end{figure}
+    	\begin{figure}[!hbt]
+		\begin{center}
+		\includegraphics[width=\columnwidth]{hashtagevolution_newtags.png}
+		\caption{Number of new hashtags observed in data collected for 5 days.}
+		\label{fig:hashtagevolution}
+		\end{center}
+	\end{figure}
 
 Figure~\ref{fig:hashtagevolution} shows the growth of hashtags in the Twitter network over a period of five days. The bumps correspond to diurnal changes. We observe that during the period of each day, for a certain time interval the rate at which new hashtags are introduced increases and then decreases to a previous value. On average there are approximately 74000 new hashtags every day. Out of these new hashtags some will become popular and in turn be potential targets for spammers. This increases the importance of studying the behavior of these hasthtags and the role they play in social networks. \\
 
@@ -348,12 +348,12 @@ As an example of the hashtag graph that could be created, we took 5 tweets from 
 \\
 
   \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=120mm]{Tweets_piday.png}
-            \caption{5 tweets from dataset collected for \#HappyPiDay.}
-            \label{fig:tweets_piday}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=120mm]{Tweets_piday.png}
+		\caption{5 tweets from dataset collected for \#HappyPiDay.}
+		\label{fig:tweets_piday}
+		\end{center}
+	\end{figure}
     
 From these tweets we extract the following set of hashtags:
 
@@ -373,18 +373,18 @@ Figure~\ref{fig:tweets_graph_piday.png} represents the hashtag graph created fro
 
     
         \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=80mm]{tweets_graph_piday.png}
-            \caption{Hashtag graph, represents the connections between hashtags in the collected dataset for \#HappyPiDay.}
-            \label{fig:tweets_graph_piday.png}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=80mm]{tweets_graph_piday.png}
+		\caption{Hashtag graph, represents the connections between hashtags in the collected dataset for \#HappyPiDay.}
+		\label{fig:tweets_graph_piday.png}
+		\end{center}
+	\end{figure}
 
 \subsection{Cliques and user activity}\label{cliques_subsection}
 In the hashtag graph there are cliques formed by hashtags. An alternate representation with the same meaning is a set of hashtags which appear together in a tweet. An example of a clique of hashtags is shown in Figure~\ref{fig:tweets_graph_piday.png}. The set of four hashtags (\#HappyPiDay, \#TakeBackYourData, \#SXSW, \#Gratitude) form a clique because all these hashtags appear in one tweet. An interesting result that we obtained is that users which were tweeting using the same set of hashtags formed a network amongst themselves. They had the same activity as shown in Figure~\ref{fig:spam_user_times}. We selected this specific set of hashtags manually. For future work we want to develop a classifier to select the hashtag set.
 \\
 
-Figure~\ref{fig:spam_user_times} shows the time when an account posted a tweet. Each dot corresponds to the time a tweet was posted. In the figure we see that all the accounts stopped tweeting at the same time. Moreover their posts follow a similar pattern. The time interval when some of the accounts do not post any tweet overlap completely. Such behaviour shows strong correlation between the tweet times of these accounts. These accounts are probably part of a botnet. On inspecting some these accounts, we observe that all of these accounts tweet using a set of hashtags, out of which one is a popular search term like:
+Figure~\ref{fig:spam_user_times} shows the time when an account posted a tweet. Each dot corresponds to the time a tweet was posted. In the figure we see that all the accounts stopped tweeting at the same time. Moreover their posts follow a similar pattern. The time interval when some of the accounts do not post any tweet overlap completely. Such behavior shows strong correlation between the tweet times of these accounts. These accounts are probably part of a botnet. On inspecting some these accounts, we observe that all of these accounts tweet using a set of hashtags, out of which one is a popular search term like:
 \begin{itemize}
 \item android
 \item video
@@ -395,12 +395,12 @@ We discover that from the spammers perspective it is not good to have all of the
 %Are you sure it is the good thing to write?
 
 \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{spam_user_times.png}
-            \caption{Posting time of tweets by suspected spammers.}
-            \label{fig:spam_user_times}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{spam_user_times.png}
+		\caption{Posting time of tweets by suspected spammers.}
+		\label{fig:spam_user_times}
+		\end{center}
+	\end{figure}
 
 \subsection{Analysis of the graph}
 
@@ -409,32 +409,33 @@ After creating the graph we computed the frequency of nodes, the degree of nodes
 %and \#iPhone. \\ not sure if we should add it since we don't show cdfs for iphone
 
         \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{Cdf_Hillary_Piday_Frequency.png}
-            \caption{CDF of hashtag frequency \#HappyPiDay and \#Hillary2016.}
-            \label{fig:cdf_hillary_piday_frequency}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{Cdf_Hillary_Piday_Frequency.png}
+		\caption{CDF of hashtag frequency \#HappyPiDay and \#Hillary2016.}
+		\label{fig:cdf_hillary_piday_frequency}
+		\end{center}
+	\end{figure}
     
 Figure~\ref{fig:cdf_hillary_piday_frequency} represents the cumulative distribution function of the frequency of hashtags. For all the campaigns, 50\% of hashtags appear once in the entire set of tweets. The outlier has the highest frequency as it is the hashtag for which we collected data. \\
 
-      \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{Cdf_Hillary_Piday_Edge_Weight.png}
-            \caption{CDF of weights of edges for \#HappyPiDay and \#Hillary2016.}
-            \label{fig:cdf_hillary_piday_edge_weight}
-            \end{center}
-      \end{figure}
+    	\begin{figure}[!hbt]
+		\begin{center}
+		\includegraphics[width=\columnwidth]{Cdf_Hillary_Piday_Edge_Weight.png}
+		\caption{CDF of weights of edges for \#HappyPiDay and \#Hillary2016.}
+		\label{fig:cdf_hillary_piday_edge_weight}
+		\end{center}
+	\end{figure}
     
-For the \#HappyPiDay campaign, the weights of edges (number of times two hashtags appear together in one tweet) are equal to 1 for about 70\% of edges. This means that 70\% of nodes are leaves and are only connected to the \#HappyPiDay hashtag. In this case we conclude that hashtags in \#Hillary2016 data set are more connected. To support this we have calculated the degree of each hashtag as a sum of weights of all adjacent edges. \\
+For the \#HappyPiDay campaign, the weights of edges (number of times two hashtags appear together in one tweet) are equal to 1 for about 70\% of edges. We can see the cumulative distribution on the Figure~\ref{fig:cdf_hillary_piday_edge_weight}. This means that 70\% of nodes are leaves and are only connected to the \#HappyPiDay hashtag. In this case we conclude that hashtags in \#Hillary2016 data set are more connected. To support this we have calculated the degree of each hashtag as a sum of weights of all adjacent edges which is presented on the Figure~\ref{fig:cdf_hillary_piday_weight_sum}.
+\\
     
         \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{Cdf_Hillary_Piday_Node_weighted_Degree.png}
-            \caption{CDF of weighted node degree for \#HappyPiDay and \#Hillary2016.}
-            \label{fig:cdf_hillary_piday_weight_sum}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{Cdf_Hillary_Piday_Node_weighted_Degree.png}
+		\caption{CDF of weighted node degree for \#HappyPiDay and \#Hillary2016.}
+		\label{fig:cdf_hillary_piday_weight_sum}
+		\end{center}
+	\end{figure}
 
 We conclude that even if hashtags in the \#HappyPiDay data set are connected to a smaller number of hashtags, the degrees of nodes in both data sets are distributed similarly and depend mostly on the size of dataset and the frequency of a hashtag. \\
 
@@ -459,37 +460,37 @@ In the Table~\ref{tab:graph_freq_degree} we show an example of calculated freque
 The last type of hashtag is an indication that they are being used by users with suspicious activity. \\
 
       \begin{table}[!hbt]
-            \begin{center}
-            \caption{Frequency and degree for the subset of tweets from the dataset collected for \#HappyPiDay.}
-            \label{tab:graph_freq_degree}
-            \begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|}
-                  \hline
-                  Hashtag & Frequency & Degree \\
+		\begin{center}
+		\caption{Frequency and degree for the subset of tweets from the dataset collected for \#HappyPiDay.}
+		\label{tab:graph_freq_degree}
+		\begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|}
+			\hline
+			Hashtag & Frequency & Degree \\
             \hline
-                  1. HappyPIday & 5 & 5 \\
-                  \hline
-                  2. Supernatural & 2  &  1  \\
-                  \hline
-                  3. Gratitude & 1 & 3 \\
+			1. HappyPIday & 5 & 5 \\
+			\hline
+			2. Supernatural & 2  &  1  \\
+			\hline
+			3. Gratitude & 1 & 3 \\
             \hline
             4. SXSW & 1 & 3 \\
-                  \hline
+			\hline
             5. TakeBackYourData & 1 & 3\\
-                  \hline
+			\hline
             6. IncomeInquality & 1 & 1 \\
-                  \hline
-            \end{tabular}
-            \end{center}
-      \end{table}
+			\hline
+		\end{tabular}
+		\end{center}
+	\end{table}
 
 
 %    \begin{figure}[!hbt]
-%           \begin{center}
-%           \includegraphics[width=\columnwidth]{Scatter_Hillary_Piday_With_Retweets_Sum.png}
-%           \caption{Scatterplot of weighted node degree and frequency of hashtags}
-%           \label{fig:scatter_hillary_piday_with_retweets_sum}
-%           \end{center}
-%     \end{figure}
+% 		\begin{center}
+% 		\includegraphics[width=\columnwidth]{Scatter_Hillary_Piday_With_Retweets_Sum.png}
+% 		\caption{Scatterplot of weighted node degree and frequency of hashtags}
+% 		\label{fig:scatter_hillary_piday_with_retweets_sum}
+% 		\end{center}
+% 	\end{figure}
 
 
 %To study dependence between frequency and degree at the beginning we decided to compute the weighted degree of a node as a sum of weights of edges adjacent to a node. In other words, the weighted degree of a node is a number of other hashtags the analyzed hashtag appears with multiplied by a number of tweets in which these hashtags appear together. After receiving results that are presented on the Figure~\ref{fig:scatter_hillary_piday_with_retweets_sum}, we observed high dependence between the frequency of a hashtag and its weighted degree. We were expecting to see outliers with the high frequency and low degree, which were present in the dataset. There results do not provide a suitable basis for further analysis, because the number of tweets in which two hashtags appear together will grow with the frequency. Hence, the weighted degree of a node will also grow according to the growth of frequency. 
@@ -498,35 +499,35 @@ The last type of hashtag is an indication that they are being used by users with
 
 
         \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{Scatter_Hillary_Piday_With_Retweets.png}
-            \caption{Scatterplot of degree and frequency of hashtags.}
-            \label{fig:scatter_hillary_piday_with_retweets}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{Scatter_Hillary_Piday_With_Retweets.png}
+		\caption{Scatterplot of degree and frequency of hashtags.}
+		\label{fig:scatter_hillary_piday_with_retweets}
+		\end{center}
+	\end{figure}
     
 
-In Figure~\ref{fig:scatter_hillary_piday_with_retweets} we see that there is a correlation between frequency and degree. We see that there is a correlation between frequency and degree in terms of tweets limitations. If a hashtag has a low frequency it can't be connected to a significant number of other hashtags, because of the size limitations of a tweet (maximum of 140 characters in a tweet). Hence, there is an upper bound for the degree of a hahstag, based on the frequency. For both \#HappyPiDay and \#Hillary2016 we have encountered a set of nodes with high frequency and low degree, that is hashtags that appear a lot of times but are connected few other hashtags. These outliers are of interest. To study them, we computed the ratio between the frequency and the degree of hashtags. % In the set of hashtags with high frequency and low degree we observed a number of retweets which are not related to spam. These are not of interest. 
-Retweets will have high frequency since they are posted by many users and will not have a high degree since they are essentially copies of the original tweet. We do further computations after removing retweets from our dataset. \\
+In Figure~\ref{fig:scatter_hillary_piday_with_retweets} we see that there is a correlation between frequency and degree. If a hashtag has a low frequency it can't be connected to a significant number of other hashtags because of the size limitations of a tweet (maximum of 140 characters in a tweet). Hence, there is an upper bound for the degree of a hahstag, based on the frequency. For both \#HappyPiDay and \#Hillary2016 we have encountered a set of nodes with high frequency and low degree, that is hashtags that appear a lot of times but are connected few other hashtags. These are of interest. To study them, we computed the ratio between the frequency and the degree of hashtags. % In the set of hashtags with high frequency and low degree we observed a number of retweets which are not related to spam. These are not of interest. 
+Retweets will have high frequency since they are posted by many users and will not have a high degree since they are essentially copies of the original tweet. We do further computations after removing retweets from our datasets. \\
 
 
     
         \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{Ratio_Piday_Hillary_With_Retweets.png}
-            \caption{Ratio between frequency and degree of a node for \#HappyPiDay and \#Hillary2016. Ratio is represented with a dot for each of the hashtags in the data set. Hashtags are sorted alphabetically.}
-            \label{fig:ratio_hillary_piday_with_retweets}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{Ratio_Piday_Hillary_With_Retweets.png}
+		\caption{Ratio between frequency and degree of a node for \#HappyPiDay and \#Hillary2016. Ratio is represented with a dot for each of the hashtags in the data set. Hashtags are sorted alphabetically.}
+		\label{fig:ratio_hillary_piday_with_retweets}
+		\end{center}
+	\end{figure}
     
 
         \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{Ratio_Piday_Hillary_Without_Retweets.png}
-            \caption{Ratio between frequency and degree of a node for \#HappyPiDay and \#Hillary2016. Retweets are excluded.}
-            \label{fig:ratio_hillary_piday_without_retweets}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{Ratio_Piday_Hillary_Without_Retweets.png}
+		\caption{Ratio between frequency and degree of a node for \#HappyPiDay and \#Hillary2016. Retweets are excluded.}
+		\label{fig:ratio_hillary_piday_without_retweets}
+		\end{center}
+	\end{figure}
     
     
 For the following analysis we have chosen the top hashtags for which frequency is at least five times bigger than the degree. This means that the number of times the hashtag  appears in a tweet is at least five times the number of different hashtags it is connected to. Table~\ref{tab:hashtagratio} contains information about a set of hashtags, that were chosen based on the following criteria:
@@ -536,38 +537,38 @@ For the following analysis we have chosen the top hashtags for which frequency i
 \end{itemize}
 
   \begin{table}[!hbt]
-            \begin{center}
-            \caption{Characteristics of hashtags with degree to frequency ratio $>=$ 5.}
-            \label{tab:hashtagratio}
-            \begin{tabular}{|p{5cm}|p{3cm}|p{3cm}|}
-                  \hline
-                   & \#HappyPiDay & \#Hillary2016 \\
+		\begin{center}
+		\caption{Characteristics of hashtags with degree to frequency ratio $>=$ 5.}
+		\label{tab:hashtagratio}
+		\begin{tabular}{|p{5cm}|p{3cm}|p{3cm}|}
+			\hline
+			 & \#HappyPiDay & \#Hillary2016 \\
             \hline
-                  Total number of hashtags & 2926 & 9519 \\
-                  \hline
-                  Number of hashtags with ratio $>=$ 5 & 18  &  104 \\
-                  \hline
-                  \% of hashtags with ratio $>=$ 5 & 0,6\% & 1,1\%\\
+			Total number of hashtags & 2926 & 9519 \\
+			\hline
+			Number of hashtags with ratio $>=$ 5 & 18  &  104 \\
+			\hline
+			\% of hashtags with ratio $>=$ 5 & 0,6\% & 1,1\%\\
             \hline
             Number of suspicious hashtags & 7 & 23 \\
-                  \hline
+			\hline
             \% of suspicious hashtags & 38,8\% & 22,1\%\\
-                  \hline
-            \end{tabular}
-            \end{center}
-      \end{table}
+			\hline
+		\end{tabular}
+		\end{center}
+	\end{table}
 
 \subsection{Results and discussion}
 In table~\ref{tab:hashtagratio}, we see that the overall number of hasgtags with a significant difference between the frequency and degree does not exceed 2\% of the total number of hashtags. This is an outcome of previously observed high number of hashtags which have degree $<=$ 1; the fact that the hashtag degree can't be significantly bigger than the frequency and that popular hashtags have degree and frequency values close to each other. Out of the number of hashtags with the ratio $>=$ 5, 38.8\%  and 22.1\% of hashtags for \#HappyPiDay and \#Hillary2016 were suspicious. The following Figures~\ref{fig:word_piday} and~\ref{fig:word_hillary} show the "word cloud" of the chosen top hashtags with the high ratio, where the size of the word correspond to the ratio value.
 \\
         
      \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{piday_ratio_top5.png}
-            \caption{Word cloud of top hashtags with ratio bigger than or equal to 5 in \#HappyPiDay dataset.}
-            \label{fig:word_piday}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{piday_ratio_top5.png}
+		\caption{Word cloud of top hashtags with ratio bigger than or equal to 5 in \#HappyPiDay dataset.}
+		\label{fig:word_piday}
+		\end{center}
+	\end{figure}
     
 In figure~\ref{fig:word_piday} we see the \#str8n8v4lyf hashtag with a very high ratio equal to 48. Frequency and degree for this hashtag are equal to 48 and 1 respectively. This hashtag was posted 48 times by different users and is connected only to the \#HappyPiDay hashtag. After the inspection of accounts of these users we found that all of them have a usual tweeting behavior, none of them uses an automated way to post tweets or uses the \#str8n8v4lyf hashtag for promotion or spam. The second hashtag with the highest ratio is \#audio. It has frequency equal to 12, degree equal to one, and it was posted by a single user @audio\_\_agent. This user has 1616 followers, 1968 followings and 136000 tweets. All the tweets are posted with a very high frequency and in a similar manner: they usually have a short message, set of hashtags and an embedded link, which leads to a web-site with advertisement content~\cite{dragplus_audio}. We can identify this user as a spammer. \\
 
@@ -575,12 +576,12 @@ Next suspicious hashtag with ratio equal to 7, frequency equal to 7 and degree e
 
 
    \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{hillary_ratio_top5.png}
-            \caption{Word cloud of top hashtags with ratio bigger than or equal to 5 in \#Hillary2016 dataset.}
-            \label{fig:word_hillary}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{hillary_ratio_top5.png}
+		\caption{Word cloud of top hashtags with ratio bigger than or equal to 5 in \#Hillary2016 dataset.}
+		\label{fig:word_hillary}
+		\end{center}
+	\end{figure}
     
 
 In the dataset for \#Hillary2016, \#ohhilno has degree \= 3887 and ratio \= 1943, which is significantly bigger than others. This hashtag is posted by a single user @MikeVee5 in an automated manner via an application. The overall frequency of tweets for this user is high with a high number of repeated content. Tweets are related to politics and most of them contain messages and hashtags against Hillary Clinton candidature as well as links to the political web-site "The Hill Talk"~\cite{thehilltalk}. This user may be identified as attempting to influence opinion. \\ 
@@ -595,71 +596,71 @@ In the set of hashtags with the ratio $>=$ 5 we found a subset of hashtags poste
 To see if our method will identify the actual spam campaigns, we have chosen another hashtag \#iPhone for which we collected data with a significant number of spam tweets. Data wes collected for the following periods: May 9th - May 11th; May 23rd - May 25th; June 1st. Total number of collected tweets is 97315. We computed the frequency and degree of each hashtag and ratio between them. The result is presented in Figure~\ref{fig:scatter_ratio_iphone}.
 \\
         \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{iphone_scatter_ratio_without_retweets.png}
-            \caption{Degree \& frequency scatterplot and ratio for \#iPhone.}
-            \label{fig:scatter_ratio_iphone}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{iphone_scatter_ratio_without_retweets.png}
+		\caption{Degree \& frequency scatterplot and ratio for \#iPhone.}
+		\label{fig:scatter_ratio_iphone}
+		\end{center}
+	\end{figure}
     
 In figure~\ref{fig:scatter_ratio_iphone} we observe a significant number of hashtags with high ratio. For the purposes of our analysis we have chosen the same threshold as for the two previous campaigns. Table~\ref{tab:hashtagratioiphone} provides the detailed information about the observed behavior of frequency-degree ratio. Number of tweets with ratio $>=$ 5 is bigger than the same number for previous campaign. This gives us an intuition that in \#iPhone dataset we can find more suspicious hashtags and tweets posted by users with unusual activity. Among these hastags the number of suspicious hashtags is also bigger reaching the value of 46,2\%.
 \\
     
      \begin{table}[!hbt]
-            \begin{center}
-            \caption{Analysis of top hashtags for \#iPhone with ratio $>=$ 5}
-            \label{tab:hashtagratioiphone}
-            \begin{tabular}{|p{5cm}|p{3cm}|}
-                  \hline
-                   & \#iPhone \\
+		\begin{center}
+		\caption{Analysis of top hashtags for \#iPhone with ratio $>=$ 5}
+		\label{tab:hashtagratioiphone}
+		\begin{tabular}{|p{5cm}|p{3cm}|}
+			\hline
+			 & \#iPhone \\
             \hline
-                  Total number of hashtags & 5938 \\
-                  \hline
-                  Number of hashtags with ratio $>=$ 5 & 201 \\
-                  \hline
-                  \% of hashtags with ratio $>=$ 5 & 3,38\% \\
+			Total number of hashtags & 5938 \\
+			\hline
+			Number of hashtags with ratio $>=$ 5 & 201 \\
+			\hline
+			\% of hashtags with ratio $>=$ 5 & 3,38\% \\
             \hline
             Number of suspicious hashtags & 93 \\
-                  \hline
+			\hline
             \% of suspicious hashtags & 46,2\% \\
-                  \hline
-            \end{tabular}
-            \end{center}
-      \end{table}
+			\hline
+		\end{tabular}
+		\end{center}
+	\end{table}
     
     
      \begin{figure}[!hbt]
-            \begin{center}
-            \includegraphics[width=\columnwidth]{iphone_ratio_top5.png}
-            \caption{Word cloud of top hashtags with ratio bigger than or equal to 5 in \#iPhone data set}
-            \label{fig:word_iphone}
-            \end{center}
-      \end{figure}
+		\begin{center}
+		\includegraphics[width=\columnwidth]{iphone_ratio_top5.png}
+		\caption{Word cloud of top hashtags with ratio bigger than or equal to 5 in \#iPhone data set}
+		\label{fig:word_iphone}
+		\end{center}
+	\end{figure}
     
     
 The top hashtags with the degree:frequency ratio $>=$ 5 form the word cloud shown in Figure~\ref{fig:word_iphone}. For a more precise analysis we have chosen ten hashtags from the set of hashtags with ratio $>=$ 5. These hashtags along with related frequency, degree and ratio are presented in table~\ref{tab:hashtagratioiphonetop}.
 \\
 
  \begin{table}[!hbt]
-            \begin{center}
-            \caption{Top 10 hashtags for \#iPhone with the highest ratio (ordered by ratio).}
-            \label{tab:hashtagratioiphonetop}
-            \begin{tabular}{|p{5cm}|p{2cm}|p{2cm}|p{2cm}|}
-                  \hline
-                  Hashtag & Frequency & Degree & Ratio \\
+		\begin{center}
+		\caption{Top 10 hashtags for \#iPhone with the highest ratio (ordered by ratio).}
+		\label{tab:hashtagratioiphonetop}
+		\begin{tabular}{|p{5cm}|p{2cm}|p{2cm}|p{2cm}|}
+			\hline
+			Hashtag & Frequency & Degree & Ratio \\
             \hline
-                  1. Movie & 11142 & 4 & 2785 \\
-                  \hline
-                  2. GameInsight & 14599 & 13 & 1123 \\
-                  \hline
-                  3. Sex & 11187 & 10 & 1118 \\
+			1. Movie & 11142 & 4 & 2785 \\
+			\hline
+			2. GameInsight & 14599 & 13 & 1123 \\
+			\hline
+			3. Sex & 11187 & 10 & 1118 \\
             \hline
             4. iPhoneGames & 14808 & 30 & 493 \\
-                  \hline
+			\hline
             5. Hot & 11153 & 32 & 348 \\
             \hline
             6. Bigdays & 312 & 1 & 312 \\
-                  \hline
+			\hline
             7. Analytics & 1031 & 4 & 257 \\
             \hline
             8. FishEye & 1165 & 5 & 233 \\
@@ -668,9 +669,9 @@ The top hashtags with the degree:frequency ratio $>=$ 5 form the word cloud show
             \hline
             10. Cellular & 187 & 1 & 187 \\
             \hline
-            \end{tabular}
-            \end{center}
-      \end{table}
+		\end{tabular}
+		\end{center}
+	\end{table}
     
     
 Hashtags 1, 3, 5 have similar meaning, and appear in the same tweets. The set of users posting tweets is almost the same, with minor changes. There are 160 users posting inappropriate tweets with these hashtags. The usernames have the same pattern, most of them contain inappropriate words. All tweets that contain hashtags 1, 3 and 5 may be considered as spam with abusive and adult content. \\
@@ -699,7 +700,7 @@ We can conclude that our method is able to identify hashtags which are mostly us
 
 
 % Anuvabh was responsible for the data collection and analysis. Anastasia was responsible for data analysis and result representation. Intermediate and final report were divided.
-      
+	
 
 \section{Conclusion}
 Our work studies the impact of influence of users on their followers and the relations between tweets. We study how users with a large audience impact the tweeting behavior of their followers. We conclude that they result in an impulse where there is a increase of tweets for a very short time period. Popular users do not significantly alter the behavior of other Twitter users. We also observe that the number of original posts of users stay constant and they are more than the retweets of these popular users. \\
@@ -711,38 +712,41 @@ We take a different approach in studying the behavior of hashtags. We choose has
 We plan to extend our work to general hashtag campaigns. For now we have carried out our analysis on data from specific hashtag campaigns. It would be interesting to see the results on data from several hashtag campaigns. During the project we collected tweets from Twitter's streaming API and we will apply our analysis to it. We will continue to work on the project during the summer as interns at INRIA. \\
 
 Another area that we can work on is using a sentiment analysis engine to increase the amount of automation in the system. This is would help as a preliminary classification phase. Combining this with the application of the technique on general datasets, we may try to build a real time system that can identify when opinion manipulation campaigns are being started by users.
+\\
+\vspace*{\fill}
+\pagebreak
 
 \begin{thebibliography}{10}
 
-      \bibitem{twitter_stats}
+	\bibitem{twitter_stats}
     Official Twitter statistics on the company website.
     \url{https://about.twitter.com/company}, accessed 12th June, 2015.
     
-      \bibitem{wikihashtag}
+	\bibitem{wikihashtag}
     Wikipedia article about ``Hashtag''.
     \url{http://en.wikipedia.org/wiki/Hashtag}, accessed 11th June, 2015.
-      
+	
     \bibitem{thomas_paper}
-    Kurt Thomas, Chris Grier, Dawn Song, and Vern Paxson. ``Suspended accounts in    retrospect: an analysis of twitter spam''. In \textit{IMC '11 Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference.} Pages 243-258 
+    Kurt Thomas, Chris Grier, Dawn Song, and Vern Paxson. ``Suspended accounts in 	 retrospect: an analysis of twitter spam''. In \textit{IMC '11 Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference.} Pages 243-258 
 %     \url{http://dl.acm.org/citation.cfm?id=2068840}
     
     \bibitem{benevenuto_paper}
     Fabricio Benevenuto, Gabriel Magno, Tiago Rodrigues, Virgílio Almeida. ``Detecting spammers on twitter''. In \textit{Collaboration, Electronic messaging, Anti-Abuse and Spam Conference (CEAS), 2011}
 
-      \bibitem{thehilltalk}
+	\bibitem{thehilltalk}
     The link to a political web-site ``The Hill Talk''.
     \url{http://thehilltalk.com/}, accessed 10th June, 2015.
 
-      \bibitem{dragplus_audio}
+	\bibitem{dragplus_audio}
     The link to a web-site ``Dragplus'' with advertising content.
-      \url{http://dragplus.com/page/audio}, accessed 10th June, 2015.
+	\url{http://dragplus.com/page/audio}, accessed 10th June, 2015.
 
-      \bibitem{big_days}
+	\bibitem{big_days}
     The link to an official site of the ``Big Days'' company.
-      \url{http://www.bigdays.co.uk/}, accessed 10th June, 2015.
+	\url{http://www.bigdays.co.uk/}, accessed 10th June, 2015.
 
-      \bibitem{wiki_gameinsight}
-      Wikipedia article about ``Game Insight'' company.
+	\bibitem{wiki_gameinsight}
+	Wikipedia article about ``Game Insight'' company.
     \url{http://en.wikipedia.org/wiki/Game_Insight}, accessed 10th June, 2015.
     
     \bibitem{twitter_rules}
@@ -750,7 +754,7 @@ Another area that we can work on is using a sentiment analysis engine to increas
     \url{https://support.twitter.com/articles/18311-the-twitter-rules}, accessed 11th June, 2015.
     
     \bibitem{itunes_luzmo}
-      The link to LUZMO (Light Effects Powerful Photo Editor Blend Light Leaks Textures and Overlays) application on iTunes.
+	The link to LUZMO (Light Effects Powerful Photo Editor Blend Light Leaks Textures and Overlays) application on iTunes.
     \url{https://itunes.apple.com/th/app/luzmo/id681205606?mt=8}, accessed 10th June, 2015.
     
     \bibitem{homeshopbuzz}
